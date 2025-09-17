@@ -1,0 +1,71 @@
+(deftheme batman "A dark theme based on the Batman color palette.")
+
+(let ((class '((class color) (min-colors 89)))
+      (batman-colors
+       '((bg         . "#1B1D1E")
+         (fg         . "#6F6F6F")
+         (cursor     . "#FCEF0C")
+         (selection  . "#4D504C")
+         (black      . "#1B1D1E")
+         (red        . "#E6DC44")
+         (green      . "#C8BE46")
+         (yellow     . "#F4FD22")
+         (blue       . "#737174")
+         (purple     . "#747271")
+         (cyan       . "#62605F")
+         (white      . "#C6C5BF")
+         (br-black   . "#505354")
+         (br-red     . "#FFF78E")
+         (br-green   . "#FFF27D")
+         (br-yellow  . "#FEED6C")
+         (br-blue    . "#919495")
+         (br-purple  . "#9A9A9D")
+         (br-cyan    . "#A3A3A6")
+         (br-white   . "#DADBD6"))))
+
+  (custom-theme-set-faces
+   'batman
+
+   ;; Basic UI
+   `(default ((,class (:background ,(cdr (assoc 'bg batman-colors))
+                                   :foreground ,(cdr (assoc 'fg batman-colors))))))
+   `(cursor ((,class (:background ,(cdr (assoc 'cursor batman-colors))))))
+   `(region ((,class (:background ,(cdr (assoc 'selection batman-colors))))))
+   `(fringe ((,class (:background ,(cdr (assoc 'bg batman-colors))))))
+   `(minibuffer-prompt ((,class (:foreground ,(cdr (assoc 'yellow batman-colors)) :bold t))))
+   `(vertical-border ((,class (:foreground ,(cdr (assoc 'br-black batman-colors))))))
+
+   ;; Syntax highlighting
+   `(font-lock-builtin-face ((,class (:foreground ,(cdr (assoc 'purple batman-colors))))))
+   `(font-lock-comment-face ((,class (:foreground ,(cdr (assoc 'br-black batman-colors))))))
+   `(font-lock-constant-face ((,class (:foreground ,(cdr (assoc 'cyan batman-colors))))))
+   `(font-lock-function-name-face ((,class (:foreground ,(cdr (assoc 'blue batman-colors))))))
+   `(font-lock-keyword-face ((,class (:foreground ,(cdr (assoc 'yellow batman-colors)) :bold t))))
+   `(font-lock-string-face ((,class (:foreground ,(cdr (assoc 'green batman-colors))))))
+   `(font-lock-type-face ((,class (:foreground ,(cdr (assoc 'br-blue batman-colors))))))
+   `(font-lock-variable-name-face ((,class (:foreground ,(cdr (assoc 'white batman-colors))))))
+   `(font-lock-warning-face ((,class (:foreground ,(cdr (assoc 'red batman-colors)) :bold t))))
+
+   ;; Mode line
+   `(mode-line ((,class (:background ,(cdr (assoc 'br-black batman-colors))
+                                     :foreground ,(cdr (assoc 'fg batman-colors))
+                                     :box nil))))
+   `(mode-line-inactive ((,class (:background ,(cdr (assoc 'bg batman-colors))
+                                              :foreground ,(cdr (assoc 'br-black batman-colors))
+                                              :box nil))))
+
+   ;; Line numbers
+   `(line-number ((,class (:foreground ,(cdr (assoc 'br-black batman-colors))))))
+   `(line-number-current-line ((,class (:foreground ,(cdr (assoc 'yellow batman-colors)) :bold t))))
+
+   ;; Highlighting
+   `(highlight ((,class (:background ,(cdr (assoc 'selection batman-colors))))))
+   `(isearch ((,class (:background ,(cdr (assoc 'br-yellow batman-colors))
+                                   :foreground ,(cdr (assoc 'black batman-colors))))))
+   `(lazy-highlight ((,class (:background ,(cdr (assoc 'br-cyan batman-colors))))))
+
+   ;; Misc
+   `(link ((,class (:foreground ,(cdr (assoc 'br-blue batman-colors)) :underline t))))
+   `(show-paren-match ((,class (:background ,(cdr (assoc 'br-yellow batman-colors))))))))
+
+(provide-theme 'batman)

@@ -1,0 +1,14 @@
+# Emacs auto-save files
+auto-save-list/
+
+# Straight.el package manager
+straight/
+
+# Emacs native compilation cache
+eln-cache/
+
+# Optional: other common Emacs files to ignore
+*.elc
+*~
+\#*\#
+.\#*
