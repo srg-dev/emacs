@@ -1,3 +1,4 @@
+;;; batman-theme.el --- Emacs Batman Theme Configuration -*- lexical-binding: t; -*-
 (deftheme batman "A dark theme based on the Batman color palette.")
 
 (let ((class '((class color) (min-colors 89)))

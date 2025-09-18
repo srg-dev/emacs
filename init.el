@@ -1,3 +1,5 @@
+;;; init.el --- Main Emacs Configuration -*- lexical-binding: t; -*-
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -14,10 +16,60 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+; Configure use-package to use straight.el by default
+(use-package straight
+  :custom
+  (straight-use-package-by-default t))
 
-;; Use straight.el for use-package expressions
-(straight-use-package 'use-package)
-(setq straight-use-package-by-default t)
+;; Basic Emacs settings
+(setq inhibit-startup-message t
+      visible-bell t
+      ring-bell-function 'ignore
+      make-backup-files nil
+      auto-save-default nil)
+
+;; Font configuration
+(set-face-attribute 'default nil
+                    :family "Noto Sans Mono"
+                    :height 160) ; 16pt (height is in 1/10pt units)
+
+;; UI improvements
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(column-number-mode 1)
+(global-display-line-numbers-mode 1)
+
+;; Essential packages
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :config
+  (exec-path-from-shell-initialize))
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package ivy
+  :config
+  (ivy-mode 1)
+  :custom
+  (ivy-use-virtual-buffers t)
+  (enable-recursive-minibuffers t))
+
+(use-package counsel
+  :config
+  (counsel-mode 1))
+
+(use-package swiper
+  :bind (("C-s" . swiper)))
+
+(use-package company
+  :config
+  (global-company-mode 1))
+
+(use-package magit
+  :bind (("C-x g" . magit-status)))
 
 ;; theme
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
