@@ -1,9 +1,8 @@
 ;;; batman-theme.el --- Emacs Batman Theme Configuration -*- lexical-binding: t; -*-
 (deftheme batman "A dark theme based on the Batman color palette.")
-
 (let ((class '((class color) (min-colors 89)))
       (batman-colors
-       '((bg         . "#1B1D1E")
+       '((bg         . "#2e2e2e")
          (fg         . "#6F6F6F")
          (cursor     . "#FCEF0C")
          (selection  . "#4D504C")
@@ -23,10 +22,8 @@
          (br-purple  . "#9A9A9D")
          (br-cyan    . "#A3A3A6")
          (br-white   . "#DADBD6"))))
-
   (custom-theme-set-faces
    'batman
-
    ;; Basic UI
    `(default ((,class (:background ,(cdr (assoc 'bg batman-colors))
                                    :foreground ,(cdr (assoc 'fg batman-colors))))))
@@ -35,7 +32,6 @@
    `(fringe ((,class (:background ,(cdr (assoc 'bg batman-colors))))))
    `(minibuffer-prompt ((,class (:foreground ,(cdr (assoc 'yellow batman-colors)) :bold t))))
    `(vertical-border ((,class (:foreground ,(cdr (assoc 'br-black batman-colors))))))
-
    ;; Syntax highlighting
    `(font-lock-builtin-face ((,class (:foreground ,(cdr (assoc 'purple batman-colors))))))
    `(font-lock-comment-face ((,class (:foreground ,(cdr (assoc 'br-black batman-colors))))))
@@ -46,27 +42,22 @@
    `(font-lock-type-face ((,class (:foreground ,(cdr (assoc 'br-blue batman-colors))))))
    `(font-lock-variable-name-face ((,class (:foreground ,(cdr (assoc 'white batman-colors))))))
    `(font-lock-warning-face ((,class (:foreground ,(cdr (assoc 'red batman-colors)) :bold t))))
-
-   ;; Mode line
-   `(mode-line ((,class (:background ,(cdr (assoc 'br-black batman-colors))
-                                     :foreground ,(cdr (assoc 'fg batman-colors))
+   ;; Mode line - Enhanced visibility
+   `(mode-line ((,class (:background ,(cdr (assoc 'selection batman-colors))
+                                     :foreground ,(cdr (assoc 'yellow batman-colors))
                                      :box nil))))
    `(mode-line-inactive ((,class (:background ,(cdr (assoc 'bg batman-colors))
                                               :foreground ,(cdr (assoc 'br-black batman-colors))
                                               :box nil))))
-
    ;; Line numbers
    `(line-number ((,class (:foreground ,(cdr (assoc 'br-black batman-colors))))))
    `(line-number-current-line ((,class (:foreground ,(cdr (assoc 'yellow batman-colors)) :bold t))))
-
    ;; Highlighting
    `(highlight ((,class (:background ,(cdr (assoc 'selection batman-colors))))))
    `(isearch ((,class (:background ,(cdr (assoc 'br-yellow batman-colors))
                                    :foreground ,(cdr (assoc 'black batman-colors))))))
    `(lazy-highlight ((,class (:background ,(cdr (assoc 'br-cyan batman-colors))))))
-
    ;; Misc
    `(link ((,class (:foreground ,(cdr (assoc 'br-blue batman-colors)) :underline t))))
    `(show-paren-match ((,class (:background ,(cdr (assoc 'br-yellow batman-colors))))))))
-
 (provide-theme 'batman)
